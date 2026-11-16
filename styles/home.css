@@ -1,0 +1,761 @@
+/* ==========================================================================
+   Mbeks Travels — Homepage sections
+   Loaded on index.html only, after style.css.
+
+   1. Hero
+   2. Intro / about teaser
+   3. Travel experiences grid
+   4. Destinations mosaic
+   5. Why Mbeks (sticky split)
+   6. Moments (scroll-driven gallery)
+   7. Testimonials
+   ========================================================================== */
+
+
+/* 1. Hero
+   ========================================================================== */
+.hero {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  min-height: 940px;
+  color: var(--cream);
+}
+
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 42%;
+}
+
+/* Flat tint (no gradients) for header and headline legibility */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: rgba(0, 0, 0, .5);
+}
+
+.hero__head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  padding-top: calc(var(--header-h) + 24px);
+  text-align: center;
+}
+
+.hero__head .eyebrow {
+  color: #FFFFFF;
+}
+
+.hero__title {
+  color: #FFFFFF;
+  text-shadow: 0 2px 24px rgba(0, 0, 0, .35);
+}
+
+.hero__title span {
+  color: var(--brown-light);
+}
+
+/* Buttons under the description */
+.hero__head .btn-row {
+  justify-content: center;
+  margin-top: 8px;
+}
+
+/* Description under the title */
+.hero__lead {
+  max-width: 620px;
+  font-size: 19px;
+  line-height: 1.6;
+  color: #FFFFFF;
+  text-shadow: 0 1px 14px rgba(0, 0, 0, .6);
+}
+
+@media (max-width: 819px) {
+  .hero {
+    min-height: 100svh;
+  }
+
+  .hero__lead {
+    font-size: 16px;
+  }
+}
+
+
+/* 2. Intro / about teaser
+   ========================================================================== */
+.intro__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 56px;
+  text-align: center;
+}
+
+/* Full content width: from the logo's left edge to the Book a Trip button's right edge */
+.trio {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+}
+
+.trio .media {
+  flex: 1 1 0;
+  aspect-ratio: 6 / 5;
+  border-radius: 20px;
+}
+
+.trio .media:nth-child(2) {
+  aspect-ratio: 3 / 4;
+}
+
+.intro__body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  width: 100%;
+}
+
+.intro__places {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 20px;
+  border-radius: var(--r-pill);
+  background: var(--chip);
+  box-shadow: inset 0 0 0 1px var(--chip-line);
+  font: 500 16px/22px var(--fb);
+}
+
+.intro__places .icon {
+  width: 18px;
+  height: 18px;
+  color: var(--leaf);
+}
+
+/* Same width as the nav pill (--nav-w is measured by scripts/main.js) */
+.intro__statement {
+  max-width: calc(var(--nav-w, 640px) + 140px);
+  font: 400 clamp(26px, 2.5vw, 36px)/1.3 var(--fb);
+  text-wrap: balance;
+}
+
+.intro__statement em {
+  font-family: var(--fd);
+  font-style: normal;
+  color: var(--accent-text);
+}
+
+@media (max-width: 819px) {
+  .intro__inner {
+    gap: 40px;
+  }
+
+  .trio {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .trio .media {
+    flex: 1 1 calc(50% - 6px);
+  }
+
+  .trio .media:nth-child(2) {
+    order: -1;
+    flex-basis: 100%;
+    aspect-ratio: 4 / 3;
+  }
+
+  .intro__places {
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+}
+
+
+/* 3. Travel experiences grid
+   ========================================================================== */
+.exp-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.exp-grid .tile {
+  min-height: 250px;
+}
+
+.exp-grid .tile--feature {
+  grid-row: span 2;
+  min-height: 520px;
+  padding: 32px;
+  gap: 14px;
+}
+
+.tile--feature .tag--gold {
+  align-self: flex-start;
+}
+
+.exp-strip {
+  min-height: 220px;
+  margin-top: 20px;
+}
+
+.exp-strip .tile__title {
+  font-size: clamp(32px, 3vw, 38px);
+}
+
+@media (max-width: 1079px) {
+  .exp-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .exp-grid .tile--feature {
+    grid-column: 1 / -1;
+    grid-row: auto;
+    min-height: 440px;
+  }
+}
+
+@media (max-width: 819px) {
+  .exp-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .exp-grid .tile--feature {
+    min-height: 460px;
+    padding: 24px;
+  }
+
+  .exp-strip {
+    margin-top: 16px;
+    padding: 24px;
+  }
+}
+
+
+/* 4. Destinations explorer
+   Desktop: numbered list on the left, photo stage on the right. The whole
+   explorer pins while the spacer below it scrolls past; scroll progress picks
+   the active destination (hover/focus also picks one).
+   Mobile: the rows become swipeable photo cards.
+   ========================================================================== */
+.dest-explorer {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  gap: 64px;
+  align-items: stretch;
+}
+
+.dest-pin .dest-explorer {
+  position: sticky;
+  top: var(--pin-top, 24px);
+}
+
+/* Scroll distance while pinned: a little under one screen per destination */
+.dest-pin__space {
+  height: 300vh;
+}
+
+.dest-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--line);
+}
+
+.dest-row {
+  display: grid;
+  grid-template-columns: 52px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 20px;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--line);
+  color: var(--text);
+  text-decoration: none;
+}
+
+.dest-row__thumb {
+  display: none;
+}
+
+.dest-row__num {
+  font: 700 14px/1 var(--fb);
+  letter-spacing: 1.5px;
+  color: var(--accent-text);
+}
+
+.dest-row__body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.dest-row__name {
+  font: 400 clamp(30px, 3.2vw, 44px)/1 var(--fd);
+  transition: transform .45s var(--ease), color .3s;
+}
+
+.dest-row__meta {
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+.dest-row .arrow-circle {
+  width: 46px;
+  height: 46px;
+  background: transparent;
+  box-shadow: inset 0 0 0 1.5px var(--line);
+  color: var(--text);
+  transition: transform .3s var(--ease), background-color .3s, box-shadow .3s;
+}
+
+.dest-row.is-active .dest-row__name {
+  color: var(--leaf);
+  transform: translateX(10px);
+}
+
+.dest-row.is-active .arrow-circle {
+  background: var(--gold);
+  box-shadow: none;
+  color: var(--on-gold);
+  transform: rotate(45deg);
+}
+
+.dest-row:focus-visible {
+  outline-offset: 4px;
+}
+
+/* Photo stage: every photo is stacked; the active one fades in */
+.dest-stage {
+  position: relative;
+  min-height: 560px;
+  overflow: hidden;
+  border-radius: var(--r-tile);
+  background: var(--night);
+}
+
+.dest-stage__item {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  opacity: 0;
+  transition: opacity .6s var(--ease);
+}
+
+.dest-stage__item.is-active {
+  opacity: 1;
+}
+
+.dest-stage__item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.08);
+  transition: transform 1.2s var(--ease);
+}
+
+.dest-stage__item.is-active img {
+  transform: scale(1);
+}
+
+.dest-stage__item figcaption {
+  position: absolute;
+  inset: auto 24px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  color: #FFFFFF;
+}
+
+.dest-stage__kicker {
+  padding: 8px 14px;
+  border-radius: var(--r-pill);
+  background: var(--gold);
+  color: var(--on-gold);
+  font: 700 13px/16px var(--fb);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.dest-stage__places {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.place-pill {
+  padding: 6px 12px;
+  border-radius: var(--r-pill);
+  background: rgba(0, 0, 0, .45);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  font: 500 14px/18px var(--fb);
+}
+
+.dest-foot {
+  display: flex;
+  justify-content: center;
+  margin-top: 48px;
+}
+
+/* Tablet and mobile: swipeable cards, each with its own photo */
+@media (max-width: 1079px) {
+  .dest-explorer {
+    display: block;
+  }
+
+  .dest-pin .dest-explorer {
+    position: static;
+  }
+
+  .dest-pin__space {
+    display: none;
+  }
+
+  .dest-stage {
+    display: none;
+  }
+
+  .dest-list {
+    display: flex;
+    gap: 16px;
+    margin-inline: calc(var(--gutter) * -1);
+    padding: 0 var(--gutter) 8px;
+    overflow-x: auto;
+    border-top: 0;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--gutter);
+    scrollbar-width: none;
+  }
+
+  .dest-list::-webkit-scrollbar {
+    display: none;
+  }
+
+  .dest-list li {
+    flex: 0 0 min(78%, 340px);
+    scroll-snap-align: start;
+  }
+
+  .dest-row {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    grid-template-rows: auto auto;
+    align-items: start;
+    gap: 16px 12px;
+    padding: 0;
+    border-bottom: 0;
+  }
+
+  .dest-row__thumb {
+    display: block;
+    grid-column: 1 / -1;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    height: auto;
+    object-fit: cover;
+    border-radius: var(--r-tile);
+  }
+
+  .dest-row__num {
+    padding-top: 6px;
+  }
+
+  .dest-row__name {
+    font-size: 30px;
+  }
+
+  .dest-row.is-active .dest-row__name {
+    color: var(--text);
+    transform: none;
+  }
+
+  .dest-row .arrow-circle,
+  .dest-row.is-active .arrow-circle {
+    background: var(--leaf);
+    box-shadow: none;
+    color: #FFFFFF;
+    transform: none;
+  }
+
+  .dest-foot {
+    margin-top: 32px;
+  }
+}
+
+
+/* 6. Moments (scroll-driven gallery)
+   The stage pins for the whole section. scripts/main.js animates the word
+   (letters rise in), then fades photos in and out around it.
+   Without JS or with reduced motion everything shows statically.
+   ========================================================================== */
+.moments {
+  position: relative;
+  height: 3600px;
+  background: var(--night);
+}
+
+.moments__stage {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+}
+
+.moments__photo {
+  --rot: 0deg;
+  position: absolute;
+  z-index: 1;
+  margin: 0;
+  border-radius: 24px;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, .5);
+  transform: rotate(var(--rot));
+}
+
+.moments.is-animated .moments__photo {
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+/* Placement around the word */
+.moments__photo:nth-child(1) { left: 4%;   top: 8%;     width: clamp(200px, 26vw, 400px); aspect-ratio: 4 / 5; --rot: -4deg; }
+.moments__photo:nth-child(2) { right: 5%;  top: 6%;     width: clamp(240px, 32vw, 520px); aspect-ratio: 3 / 2; --rot: 3deg; }
+.moments__photo:nth-child(3) { left: 9%;   bottom: 6%;  width: clamp(220px, 28vw, 460px); aspect-ratio: 5 / 4; --rot: 2deg; }
+.moments__photo:nth-child(4) { right: 8%;  bottom: 5%;  width: clamp(200px, 25vw, 380px); aspect-ratio: 4 / 5; --rot: -3deg; }
+.moments__photo:nth-child(5) { left: 33%;  top: 4%;     width: clamp(220px, 28vw, 440px); aspect-ratio: 3 / 2; --rot: -2deg; }
+.moments__photo:nth-child(6) { right: 27%; bottom: 4%;  width: clamp(220px, 28vw, 440px); aspect-ratio: 3 / 2; --rot: 3deg; }
+.moments__photo:nth-child(7) { left: 2%;   top: 30%;    width: clamp(180px, 22vw, 340px); aspect-ratio: 3 / 4; --rot: 4deg; }
+.moments__photo:nth-child(8) { right: 2%;  top: 28%;    width: clamp(180px, 22vw, 340px); aspect-ratio: 3 / 4; --rot: -4deg; }
+
+.moments__center {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  padding-inline: var(--gutter);
+  text-align: center;
+  pointer-events: none;
+}
+
+.moments__word {
+  font: 400 clamp(84px, 19vw, 300px)/.9 var(--fd);
+  color: #FFFFFF;
+  white-space: nowrap;
+  letter-spacing: -4px;
+  filter: drop-shadow(0 8px 40px rgba(0, 0, 0, .6));
+  will-change: transform;
+}
+
+.moments__word .split-word {
+  padding-inline: .02em;
+}
+
+.moments__center .script {
+  color: #FFFFFF;
+}
+
+.moments__center .btn {
+  pointer-events: auto;
+}
+
+@media (max-width: 819px) {
+  .moments {
+    height: 2800px;
+  }
+
+  .moments__photo:nth-child(n) {
+    width: 46%;
+  }
+
+  .moments__word {
+    font-size: clamp(60px, 18vw, 120px);
+    letter-spacing: -2px;
+  }
+}
+
+/* Static fallback (no JS or reduced motion) */
+.moments:not(.is-animated) {
+  height: auto;
+}
+
+.moments:not(.is-animated) .moments__stage {
+  position: relative;
+  height: min(100vh, 920px);
+}
+
+.moments:not(.is-animated) .moments__photo {
+  opacity: .85;
+}
+
+
+/* 7. Testimonials
+   ========================================================================== */
+.testimonials {
+  position: relative;
+  isolation: isolate;
+  padding-block: 140px;
+  color: #FFFFFF;
+  text-align: center;
+}
+
+.testimonials__bg {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.testimonials::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  /* Black overlay, a touch darker than the hero so the quote reads clearly */
+  background: rgba(0, 0, 0, .6);
+}
+
+.testimonials__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 36px;
+}
+
+/* On photos the eyebrow is white, as in the hero */
+.testimonials .eyebrow {
+  color: #FFFFFF;
+}
+
+.testimonials .h2 {
+  max-width: 900px;
+}
+
+/* All quotes share one grid cell so the height never jumps */
+.quotes {
+  display: grid;
+  max-width: 980px;
+}
+
+.quote {
+  grid-area: 1 / 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(24px);
+  filter: blur(6px);
+  transition: opacity .6s var(--ease), transform .6s var(--ease), filter .6s var(--ease), visibility .6s;
+}
+
+.quote.is-active {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  filter: none;
+}
+
+.quote blockquote {
+  font: 500 clamp(20px, 2.2vw, 30px)/1.45 var(--fb);
+  text-wrap: balance;
+}
+
+.quote figcaption {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.quote__name {
+  font: 700 17px/24px var(--fb);
+}
+
+.quote__trip {
+  font: 500 15px/22px var(--fb);
+  color: #FFFFFF;
+}
+
+.quote-pickers {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  padding: 0;
+  list-style: none;
+}
+
+.quote-picker {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 44px;
+  padding: 8px 18px 8px 8px;
+  border: 0;
+  border-radius: var(--r-pill);
+  background: var(--chip);
+  box-shadow: inset 0 0 0 1px var(--chip-line);
+  color: var(--text);
+  font: 600 14px/18px var(--fb);
+  transition: background-color .2s, color .2s;
+}
+
+.quote-picker:hover {
+  background: rgba(255, 255, 255, .16);
+}
+
+.quote-picker[aria-pressed="true"] {
+  background: #FFFFFF;
+  box-shadow: 0 6px 20px rgba(2, 52, 27, .14);
+  color: var(--ink);
+}
+
+.quote-picker img {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--r-pill);
+  object-fit: cover;
+}
+
+@media (max-width: 819px) {
+  .testimonials {
+    padding-block: 88px;
+  }
+
+  .quote-picker {
+    padding-right: 14px;
+    font-size: 13px;
+  }
+
+  .quote-picker img {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .quote {
+    filter: none;
+  }
+}
