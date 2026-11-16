@@ -5,7 +5,7 @@
    1. Shared inner-page blocks (split, cards, CTA banner, jump links)
    2. About
    3. Experiences & destinations (detail rows, featured places)
-   4. Gallery (filters, masonry, lightbox)
+   4. Gallery (sticky filters, bento grid, lightbox)
    5. Contact (WhatsApp card, contact list, enquiry form)
    6. Blog article
    ========================================================================== */
@@ -305,71 +305,236 @@
 
 /* 4. Gallery
    ========================================================================== */
-.filters {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
+.gallery-head {
   margin-bottom: 40px;
 }
 
+/* Filter bar sticks below the header while you scroll the photos */
+.filters-bar {
+  position: sticky;
+  top: 16px;
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 32px;
+  transition: top .4s var(--ease);
+}
+
+body:has(.site-header.is-shown) .filters-bar {
+  top: 92px;
+}
+
+.filters {
+  display: flex;
+  gap: 6px;
+  max-width: 100%;
+  padding: 6px;
+  overflow-x: auto;
+  border-radius: var(--r-pill);
+  background: rgba(255, 255, 255, .88);
+  box-shadow: 0 0 0 1px var(--line), 0 12px 32px rgba(2, 52, 27, .1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  scrollbar-width: none;
+}
+
+.filters::-webkit-scrollbar {
+  display: none;
+}
+
 .filter {
-  min-height: 46px;
-  padding: 0 22px;
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 18px;
   border: 0;
   border-radius: var(--r-pill);
-  background: var(--chip);
-  box-shadow: inset 0 0 0 1px var(--chip-line);
+  background: transparent;
+  color: var(--text);
   font: 600 15px/20px var(--fb);
+  white-space: nowrap;
   transition: background-color .2s, color .2s;
 }
 
 .filter:hover {
-  background: rgba(2, 52, 27, .1);
+  background: rgba(2, 52, 27, .06);
+}
+
+.filter__count {
+  display: grid;
+  place-items: center;
+  min-width: 24px;
+  height: 24px;
+  padding: 0 6px;
+  border-radius: var(--r-pill);
+  background: rgba(2, 52, 27, .08);
+  font-size: 12px;
 }
 
 .filter[aria-pressed="true"] {
   background: var(--leaf);
-  box-shadow: none;
   color: #FFFFFF;
 }
 
-/* Masonry via CSS columns */
-.masonry {
-  columns: 3 320px;
-  column-gap: 20px;
+.filter[aria-pressed="true"] .filter__count {
+  background: var(--gold);
+  color: var(--on-gold);
+}
+
+/* Bento grid: dense rows with feature, tall and wide tiles */
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-auto-rows: 240px;
+  grid-auto-flow: dense;
+  gap: 16px;
+  margin: 0;
   padding: 0;
   list-style: none;
 }
 
-.masonry li {
-  margin-bottom: 20px;
-  break-inside: avoid;
+.photo-grid__item--feature {
+  grid-column: span 2;
+  grid-row: span 2;
 }
 
-.masonry li[hidden] {
+.photo-grid__item--tall {
+  grid-row: span 2;
+}
+
+.photo-grid__item--wide {
+  grid-column: span 2;
+}
+
+.photo-grid__item[hidden] {
   display: none;
 }
 
-.masonry__btn {
+.photo-grid__item.is-in {
+  animation: photo-in .5s var(--ease) both;
+}
+
+@keyframes photo-in {
+  from { opacity: 0; transform: scale(.96); }
+}
+
+.photo-grid__btn {
+  position: relative;
   display: block;
   width: 100%;
+  height: 100%;
   padding: 0;
+  overflow: hidden;
   border: 0;
   border-radius: var(--r-card);
-  overflow: hidden;
   background: var(--night-2);
   cursor: zoom-in;
 }
 
-.masonry__btn img {
+.photo-grid__btn img {
   width: 100%;
-  height: auto;
-  transition: transform .6s var(--ease), opacity .3s;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .8s var(--ease);
 }
 
-.masonry__btn:hover img {
-  transform: scale(1.04);
+.photo-grid__btn:hover img,
+.photo-grid__btn:focus-visible img {
+  transform: scale(1.06);
+}
+
+/* Caption slides up on hover / focus */
+.photo-grid__cap {
+  position: absolute;
+  inset: auto 12px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: rgba(0, 0, 0, .55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #FFFFFF;
+  text-align: left;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity .35s var(--ease), transform .35s var(--ease);
+}
+
+.photo-grid__btn:hover .photo-grid__cap,
+.photo-grid__btn:focus-visible .photo-grid__cap {
+  opacity: 1;
+  transform: none;
+}
+
+.photo-grid__tag {
+  padding: 4px 10px;
+  border-radius: var(--r-pill);
+  background: var(--gold);
+  color: var(--on-gold);
+  font: 700 11px/14px var(--fb);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.photo-grid__text {
+  font: 500 14px/1.4 var(--fb);
+}
+
+.photo-grid__item:not(.photo-grid__item--feature):not(.photo-grid__item--wide) .photo-grid__text {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+@media (max-width: 1079px) {
+  .photo-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-auto-rows: 210px;
+  }
+}
+
+@media (max-width: 819px) {
+  .gallery-head {
+    margin-bottom: 28px;
+  }
+
+  .filters-bar {
+    top: 12px;
+    justify-content: flex-start;
+    margin-inline: calc(var(--gutter) * -1);
+    padding-inline: var(--gutter);
+  }
+
+  body:has(.site-header.is-shown) .filters-bar {
+    top: 84px;
+  }
+
+  .filter {
+    min-height: 40px;
+    padding: 0 14px;
+    font-size: 14px;
+  }
+
+  .photo-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: 170px;
+    gap: 10px;
+  }
+
+  .photo-grid__btn {
+    border-radius: 16px;
+  }
+
+  /* No hover on phones: hide captions, the viewer shows them */
+  .photo-grid__cap {
+    display: none;
+  }
 }
 
 /* Lightbox (native <dialog>) */
@@ -411,8 +576,23 @@
 }
 
 .lightbox__caption {
-  color: var(--para);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  color: #FFFFFF;
   text-align: center;
+}
+
+.lightbox__meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.lightbox__count {
+  font: 700 14px/1 var(--fb);
+  letter-spacing: 1.5px;
 }
 
 .lightbox__btn {
@@ -453,25 +633,6 @@
 }
 
 @media (max-width: 819px) {
-  .filters {
-    justify-content: flex-start;
-    margin-bottom: 28px;
-  }
-
-  .filter {
-    padding: 0 16px;
-    font-size: 14px;
-  }
-
-  .masonry {
-    columns: 2;
-    column-gap: 12px;
-  }
-
-  .masonry li {
-    margin-bottom: 12px;
-  }
-
   .lightbox {
     padding: 72px 16px 96px;
   }

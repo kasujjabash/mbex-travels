@@ -11,11 +11,13 @@
   if (!root || !dialog) return;
 
   const filters = Array.from(root.querySelectorAll("[data-filter]"));
-  const items = Array.from(root.querySelectorAll(".masonry li"));
+  const items = Array.from(root.querySelectorAll(".photo-grid__item"));
   const status = root.querySelector("[data-gallery-status]");
 
   const lightboxImg = dialog.querySelector(".lightbox__img");
-  const lightboxCaption = dialog.querySelector(".lightbox__caption");
+  const lightboxCount = dialog.querySelector("[data-lightbox-count]");
+  const lightboxTag = dialog.querySelector("[data-lightbox-tag]");
+  const lightboxText = dialog.querySelector("[data-lightbox-text]");
   let visible = items;
   let current = 0;
   let opener = null;
@@ -25,6 +27,12 @@
     filters.forEach((btn) => btn.setAttribute("aria-pressed", String(btn.dataset.filter === theme)));
     items.forEach((item) => {
       item.hidden = theme !== "all" && item.dataset.theme !== theme;
+      // Replay the fade-in on the photos that stay
+      item.classList.remove("is-in");
+      if (!item.hidden) {
+        void item.offsetWidth;
+        item.classList.add("is-in");
+      }
     });
     visible = items.filter((item) => !item.hidden);
     if (status) status.textContent = `Showing ${visible.length} photos`;
@@ -35,13 +43,18 @@
   });
 
   /* ---------------- Lightbox ---------------- */
+  const pad = (n) => String(n).padStart(2, "0");
+
   function show(index) {
     current = (index + visible.length) % visible.length;
-    const img = visible[current].querySelector("img");
+    const item = visible[current];
+    const img = item.querySelector("img");
     // Show the largest file in the srcset (full quality in the viewer)
     lightboxImg.src = img.srcset ? img.srcset.split(",").pop().trim().split(" ")[0] : img.currentSrc || img.src;
     lightboxImg.alt = img.alt;
-    lightboxCaption.textContent = img.alt;
+    lightboxText.textContent = img.alt;
+    lightboxTag.textContent = item.querySelector(".photo-grid__tag").textContent;
+    lightboxCount.textContent = `${pad(current + 1)} / ${pad(visible.length)}`;
   }
 
   items.forEach((item) => {

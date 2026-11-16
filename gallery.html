@@ -100,49 +100,206 @@
     </section>
 
     <!-- ============ Gallery ============
-         Each item: data-theme = wildlife | parks | beaches | group | adventure -->
-    <section class="section theme-light" aria-label="Photo gallery" data-gallery>
+         Each item: data-theme = wildlife | parks | beaches | group | adventure.
+         Tile size: photo-grid__item--feature (2×2), --tall (portrait), --wide.
+         Update the counts in the filter buttons when adding photos. -->
+    <section class="section theme-light gallery" aria-labelledby="gallery-title" data-gallery>
       <div class="wrap">
-        <div class="filters" role="group" aria-label="Filter photos by theme">
-          <button class="filter" type="button" aria-pressed="true" data-filter="all">All</button>
-          <button class="filter" type="button" aria-pressed="false" data-filter="wildlife">Wildlife</button>
-          <button class="filter" type="button" aria-pressed="false" data-filter="parks">Parks &amp; Landscapes</button>
-          <button class="filter" type="button" aria-pressed="false" data-filter="beaches">Beaches</button>
-          <button class="filter" type="button" aria-pressed="false" data-filter="group">Group Trips</button>
-          <button class="filter" type="button" aria-pressed="false" data-filter="adventure">Adventure</button>
+        <div class="section-head gallery-head">
+          <div class="section-head__title">
+            <p class="eyebrow">Our Moments</p>
+            <h2 class="h2" id="gallery-title">Every Photo Tells a Story</h2>
+          </div>
+          <p class="lead">Real travellers on real Mbeks trips. Pick a theme, then tap any photo to see it full size.</p>
+        </div>
+
+        <div class="filters-bar">
+          <div class="filters" role="group" aria-label="Filter photos by theme">
+            <button class="filter" type="button" aria-pressed="true" data-filter="all">All <span class="filter__count">29</span></button>
+            <button class="filter" type="button" aria-pressed="false" data-filter="wildlife">Wildlife <span class="filter__count">5</span></button>
+            <button class="filter" type="button" aria-pressed="false" data-filter="parks">Parks &amp; Landscapes <span class="filter__count">8</span></button>
+            <button class="filter" type="button" aria-pressed="false" data-filter="beaches">Beaches <span class="filter__count">5</span></button>
+            <button class="filter" type="button" aria-pressed="false" data-filter="group">Group Trips <span class="filter__count">6</span></button>
+            <button class="filter" type="button" aria-pressed="false" data-filter="adventure">Adventure <span class="filter__count">5</span></button>
+          </div>
         </div>
         <p class="visually-hidden" aria-live="polite" data-gallery-status></p>
 
-        <ul class="masonry">
-          <li data-theme="parks"><button class="masonry__btn" type="button" data-cursor="View"><img src="assets/images/photos/murchison-gate-group-1200.webp" srcset="assets/images/photos/murchison-gate-group-800.webp 800w, assets/images/photos/murchison-gate-group-1200.webp 1200w, assets/images/photos/murchison-gate-group-1600.webp 1600w" sizes="(max-width: 819px) 50vw, 33vw" alt="A Mbeks Travels group at the Murchison Falls National Park gate" width="800" height="533" loading="lazy" decoding="async"></button></li>
-          <li data-theme="wildlife"><button class="masonry__btn" type="button" data-cursor="View"><img src="assets/images/photos/ziwa-rhinos-1200.webp" srcset="assets/images/photos/ziwa-rhinos-800.webp 800w, assets/images/photos/ziwa-rhinos-1200.webp 1200w, assets/images/photos/ziwa-rhinos-1600.webp 1600w" sizes="(max-width: 819px) 50vw, 33vw" alt="White rhinos grazing under the trees at Ziwa Rhino Sanctuary" width="800" height="1067" loading="lazy" decoding="async"></button></li>
-          <li data-theme="group"><button class="masonry__btn" type="button" data-cursor="View"><img src="assets/images/photos/safari-van-group-1200.webp" srcset="assets/images/photos/safari-van-group-800.webp 800w, assets/images/photos/safari-van-group-1200.webp 1200w, assets/images/photos/safari-van-group-1600.webp 1600w" sizes="(max-width: 819px) 50vw, 33vw" alt="Travellers waving from the roof of a Mbeks safari van" width="800" height="600" loading="lazy" decoding="async"></button></li>
-          <li data-theme="group"><button class="masonry__btn" type="button" data-cursor="View"><img src="assets/images/photos/savanna-picnic-1200.webp" srcset="assets/images/photos/savanna-picnic-800.webp 800w, assets/images/photos/savanna-picnic-1200.webp 1200w, assets/images/photos/savanna-picnic-1600.webp 1600w" sizes="(max-width: 819px) 50vw, 33vw" alt="A family picnic on the savanna with Mbeks Travels fans" width="800" height="1067" loading="lazy" decoding="async"></button></li>
-          <li data-theme="adventure"><button class="masonry__btn" type="button" data-cursor="View"><img src="assets/images/photos/sipi-river-sign-960.webp" srcset="assets/images/photos/sipi-river-sign-800.webp 800w, assets/images/photos/sipi-river-sign-960.webp 960w" sizes="(max-width: 819px) 50vw, 33vw" alt="A traveller posing by the Sipi River sign among green hills" width="800" height="1067" loading="lazy" decoding="async"></button></li>
-          <li data-theme="group"><button class="masonry__btn" type="button" data-cursor="View"><img src="assets/images/photos/murchison-gate-jump-1200.webp" srcset="assets/images/photos/murchison-gate-jump-800.webp 800w, assets/images/photos/murchison-gate-jump-1200.webp 1200w, assets/images/photos/murchison-gate-jump-1600.webp 1600w" sizes="(max-width: 819px) 50vw, 33vw" alt="Travellers jumping for joy at the Murchison Falls National Park gate" width="800" height="533" loading="lazy" decoding="async"></button></li>
-          <li data-theme="parks"><button class="masonry__btn" type="button" data-cursor="View"><img src="assets/images/photos/safari-van-sunset-1200.webp" srcset="assets/images/photos/safari-van-sunset-800.webp 800w, assets/images/photos/safari-van-sunset-1200.webp 1200w, assets/images/photos/safari-van-sunset-1600.webp 1600w" sizes="(max-width: 819px) 50vw, 33vw" alt="A safari van silhouetted against an orange sunset sky" width="800" height="1067" loading="lazy" decoding="async"></button></li>
-          <li data-theme="group"><button class="masonry__btn" type="button" data-cursor="View"><img src="assets/images/photos/safari-van-selfie-1200.webp" srcset="assets/images/photos/safari-van-selfie-800.webp 800w, assets/images/photos/safari-van-selfie-1200.webp 1200w, assets/images/photos/safari-van-selfie-1600.webp 1600w" sizes="(max-width: 819px) 50vw, 33vw" alt="A traveller taking a selfie with friends on the safari van behind him" width="800" height="1067" loading="lazy" decoding="async"></button></li>
-          <li data-theme="parks"><button class="masonry__btn" type="button" data-cursor="View"><img src="assets/images/photos/mbeks-traveller-river-1200.webp" srcset="assets/images/photos/mbeks-traveller-river-800.webp 800w, assets/images/photos/mbeks-traveller-river-1200.webp 1200w, assets/images/photos/mbeks-traveller-river-1600.webp 1600w" sizes="(max-width: 819px) 50vw, 33vw" alt="A traveller in a Mbeks Travels vest looking out over the river" width="800" height="1200" loading="lazy" decoding="async"></button></li>
-          <li data-theme="wildlife"><button class="masonry__btn" type="button" data-cursor="View"><img src="assets/images/photos/safari-elephant-800.webp" alt="An elephant walking across the savanna" width="800" height="529" loading="lazy" decoding="async"></button></li>
-          <li data-theme="beaches"><button class="masonry__btn" type="button" data-cursor="View"><img src="assets/images/photos/zanzibar-palms-800.webp" alt="Palm trees over a Zanzibar beach" width="800" height="1067" loading="lazy" decoding="async"></button></li>
-          <li data-theme="parks"><button class="masonry__btn" type="button" data-cursor="View"><img src="assets/images/photos/savanna-sunset-800.webp" alt="An acacia tree on the savanna at sunset" width="800" height="533" loading="lazy" decoding="async"></button></li>
-          <li data-theme="group"><button class="masonry__btn" type="button" data-cursor="View"><img class="img-top" src="assets/images/photos/savanna-group-family-1200.webp" srcset="assets/images/photos/savanna-group-family-800.webp 800w, assets/images/photos/savanna-group-family-1200.webp 1200w, assets/images/photos/savanna-group-family-1600.webp 1600w" sizes="(max-width: 819px) 50vw, 33vw" alt="A group of travellers and a child posing together on the savanna" width="800" height="1067" loading="lazy" decoding="async"></button></li>
-          <li data-theme="wildlife"><button class="masonry__btn" type="button" data-cursor="View"><img src="assets/images/photos/forest-elephant-800.webp" alt="An elephant among forest trees" width="800" height="1143" loading="lazy" decoding="async"></button></li>
-          <li data-theme="adventure"><button class="masonry__btn" type="button" data-cursor="View"><img src="assets/images/photos/diving-800.webp" alt="A diver beside a shoal of yellow fish" width="800" height="533" loading="lazy" decoding="async"></button></li>
-          <li data-theme="parks"><button class="masonry__btn" type="button" data-cursor="View"><img src="assets/images/photos/waterfall-800.webp" alt="A waterfall in lush forest" width="800" height="533" loading="lazy" decoding="async"></button></li>
-          <li data-theme="beaches"><button class="masonry__btn" type="button" data-cursor="View"><img src="assets/images/photos/maldives-villas-800.webp" alt="Overwater villas in the Maldives" width="800" height="1000" loading="lazy" decoding="async"></button></li>
-          <li data-theme="wildlife"><button class="masonry__btn" type="button" data-cursor="View"><img src="assets/images/photos/safari-giraffe-800.webp" alt="A giraffe beside an acacia tree" width="800" height="532" loading="lazy" decoding="async"></button></li>
-          <li data-theme="adventure"><button class="masonry__btn" type="button" data-cursor="View"><img src="assets/images/photos/sipi-falls-hike-960.webp" srcset="assets/images/photos/sipi-falls-hike-800.webp 800w, assets/images/photos/sipi-falls-hike-960.webp 960w" sizes="(max-width: 819px) 50vw, 33vw" alt="A hiker celebrating at the foot of Sipi Falls in eastern Uganda" width="800" height="1067" loading="lazy" decoding="async"></button></li>
-          <li data-theme="parks"><button class="masonry__btn" type="button" data-cursor="View"><img src="assets/images/photos/green-hills-800.webp" alt="Misty green hills" width="800" height="531" loading="lazy" decoding="async"></button></li>
-          <li data-theme="beaches"><button class="masonry__btn" type="button" data-cursor="View"><img src="assets/images/photos/beach-lounge-800.webp" alt="Loungers on a white-sand beach" width="800" height="533" loading="lazy" decoding="async"></button></li>
-          <li data-theme="group"><button class="masonry__btn" type="button" data-cursor="View"><img src="assets/images/photos/balloons-800.webp" alt="Travellers watching hot-air balloons" width="800" height="533" loading="lazy" decoding="async"></button></li>
-          <li data-theme="wildlife"><button class="masonry__btn" type="button" data-cursor="View"><img src="assets/images/photos/safari-game-drive-800.webp" alt="A safari vehicle on a game drive" width="800" height="535" loading="lazy" decoding="async"></button></li>
-          <li data-theme="adventure"><button class="masonry__btn" type="button" data-cursor="View"><img src="assets/images/photos/nile-tubing-jinja-1200.webp" srcset="assets/images/photos/nile-tubing-jinja-800.webp 800w, assets/images/photos/nile-tubing-jinja-1200.webp 1200w, assets/images/photos/nile-tubing-jinja-1600.webp 1600w" sizes="(max-width: 819px) 50vw, 33vw" alt="Friends in helmets tubing down the Nile rapids in Jinja" width="800" height="450" loading="lazy" decoding="async"></button></li>
-          <li data-theme="parks"><button class="masonry__btn" type="button" data-cursor="View"><img src="assets/images/photos/lake-getaway-800.webp" alt="A boat on a turquoise mountain lake" width="800" height="533" loading="lazy" decoding="async"></button></li>
-          <li data-theme="beaches"><button class="masonry__btn" type="button" data-cursor="View"><img src="assets/images/photos/beach-sunset-800.webp" alt="Waves on a beach at sunset" width="800" height="518" loading="lazy" decoding="async"></button></li>
-          <li data-theme="adventure"><button class="masonry__btn" type="button" data-cursor="View"><img src="assets/images/photos/dubai-desert-800.webp" alt="A camel caravan in the desert" width="800" height="533" loading="lazy" decoding="async"></button></li>
-          <li data-theme="beaches"><button class="masonry__btn" type="button" data-cursor="View"><img src="assets/images/photos/hero-beach-800.webp" alt="Clear turquoise water on a tropical beach" width="800" height="532" loading="lazy" decoding="async"></button></li>
-          <li data-theme="parks"><button class="masonry__btn" type="button" data-cursor="View"><img src="assets/images/photos/boat-lake-800.webp" alt="A wooden boat on a calm lake" width="800" height="533" loading="lazy" decoding="async"></button></li>
+        <ul class="photo-grid">
+          <li class="photo-grid__item photo-grid__item--feature" data-theme="parks">
+            <button class="photo-grid__btn" type="button" data-cursor="View">
+              <img src="assets/images/photos/murchison-gate-group-1200.webp" srcset="assets/images/photos/murchison-gate-group-800.webp 800w, assets/images/photos/murchison-gate-group-1200.webp 1200w, assets/images/photos/murchison-gate-group-1600.webp 1600w" sizes="(max-width: 819px) 100vw, 50vw" alt="A Mbeks Travels group at the Murchison Falls National Park gate" width="800" height="533" loading="lazy" decoding="async">
+              <span class="photo-grid__cap"><span class="photo-grid__tag">Parks &amp; Landscapes</span><span class="photo-grid__text">A Mbeks Travels group at the Murchison Falls National Park gate</span></span>
+            </button>
+          </li>
+          <li class="photo-grid__item photo-grid__item--tall" data-theme="wildlife">
+            <button class="photo-grid__btn" type="button" data-cursor="View">
+              <img src="assets/images/photos/ziwa-rhinos-1200.webp" srcset="assets/images/photos/ziwa-rhinos-800.webp 800w, assets/images/photos/ziwa-rhinos-1200.webp 1200w, assets/images/photos/ziwa-rhinos-1600.webp 1600w" sizes="(max-width: 819px) 50vw, 25vw" alt="White rhinos grazing under the trees at Ziwa Rhino Sanctuary" width="800" height="1067" loading="lazy" decoding="async">
+              <span class="photo-grid__cap"><span class="photo-grid__tag">Wildlife</span><span class="photo-grid__text">White rhinos grazing under the trees at Ziwa Rhino Sanctuary</span></span>
+            </button>
+          </li>
+          <li class="photo-grid__item" data-theme="group">
+            <button class="photo-grid__btn" type="button" data-cursor="View">
+              <img src="assets/images/photos/safari-van-group-1200.webp" srcset="assets/images/photos/safari-van-group-800.webp 800w, assets/images/photos/safari-van-group-1200.webp 1200w, assets/images/photos/safari-van-group-1600.webp 1600w" sizes="(max-width: 819px) 50vw, 25vw" alt="Travellers waving from the roof of a Mbeks safari van" width="800" height="600" loading="lazy" decoding="async">
+              <span class="photo-grid__cap"><span class="photo-grid__tag">Group Trips</span><span class="photo-grid__text">Travellers waving from the roof of a Mbeks safari van</span></span>
+            </button>
+          </li>
+          <li class="photo-grid__item photo-grid__item--tall" data-theme="group">
+            <button class="photo-grid__btn" type="button" data-cursor="View">
+              <img src="assets/images/photos/savanna-picnic-1200.webp" srcset="assets/images/photos/savanna-picnic-800.webp 800w, assets/images/photos/savanna-picnic-1200.webp 1200w, assets/images/photos/savanna-picnic-1600.webp 1600w" sizes="(max-width: 819px) 50vw, 25vw" alt="A family picnic on the savanna with Mbeks Travels fans" width="800" height="1067" loading="lazy" decoding="async">
+              <span class="photo-grid__cap"><span class="photo-grid__tag">Group Trips</span><span class="photo-grid__text">A family picnic on the savanna with Mbeks Travels fans</span></span>
+            </button>
+          </li>
+          <li class="photo-grid__item photo-grid__item--tall" data-theme="adventure">
+            <button class="photo-grid__btn" type="button" data-cursor="View">
+              <img src="assets/images/photos/sipi-river-sign-960.webp" srcset="assets/images/photos/sipi-river-sign-800.webp 800w, assets/images/photos/sipi-river-sign-960.webp 960w" sizes="(max-width: 819px) 50vw, 25vw" alt="A traveller posing by the Sipi River sign among green hills" width="800" height="1067" loading="lazy" decoding="async">
+              <span class="photo-grid__cap"><span class="photo-grid__tag">Adventure</span><span class="photo-grid__text">A traveller posing by the Sipi River sign among green hills</span></span>
+            </button>
+          </li>
+          <li class="photo-grid__item" data-theme="group">
+            <button class="photo-grid__btn" type="button" data-cursor="View">
+              <img src="assets/images/photos/murchison-gate-jump-1200.webp" srcset="assets/images/photos/murchison-gate-jump-800.webp 800w, assets/images/photos/murchison-gate-jump-1200.webp 1200w, assets/images/photos/murchison-gate-jump-1600.webp 1600w" sizes="(max-width: 819px) 50vw, 25vw" alt="Travellers jumping for joy at the Murchison Falls National Park gate" width="800" height="533" loading="lazy" decoding="async">
+              <span class="photo-grid__cap"><span class="photo-grid__tag">Group Trips</span><span class="photo-grid__text">Travellers jumping for joy at the Murchison Falls National Park gate</span></span>
+            </button>
+          </li>
+          <li class="photo-grid__item photo-grid__item--tall" data-theme="parks">
+            <button class="photo-grid__btn" type="button" data-cursor="View">
+              <img src="assets/images/photos/safari-van-sunset-1200.webp" srcset="assets/images/photos/safari-van-sunset-800.webp 800w, assets/images/photos/safari-van-sunset-1200.webp 1200w, assets/images/photos/safari-van-sunset-1600.webp 1600w" sizes="(max-width: 819px) 50vw, 25vw" alt="A safari van silhouetted against an orange sunset sky" width="800" height="1067" loading="lazy" decoding="async">
+              <span class="photo-grid__cap"><span class="photo-grid__tag">Parks &amp; Landscapes</span><span class="photo-grid__text">A safari van silhouetted against an orange sunset sky</span></span>
+            </button>
+          </li>
+          <li class="photo-grid__item photo-grid__item--tall" data-theme="group">
+            <button class="photo-grid__btn" type="button" data-cursor="View">
+              <img src="assets/images/photos/safari-van-selfie-1200.webp" srcset="assets/images/photos/safari-van-selfie-800.webp 800w, assets/images/photos/safari-van-selfie-1200.webp 1200w, assets/images/photos/safari-van-selfie-1600.webp 1600w" sizes="(max-width: 819px) 50vw, 25vw" alt="A traveller taking a selfie with friends on the safari van behind him" width="800" height="1067" loading="lazy" decoding="async">
+              <span class="photo-grid__cap"><span class="photo-grid__tag">Group Trips</span><span class="photo-grid__text">A traveller taking a selfie with friends on the safari van behind him</span></span>
+            </button>
+          </li>
+          <li class="photo-grid__item photo-grid__item--tall" data-theme="parks">
+            <button class="photo-grid__btn" type="button" data-cursor="View">
+              <img src="assets/images/photos/mbeks-traveller-river-1200.webp" srcset="assets/images/photos/mbeks-traveller-river-800.webp 800w, assets/images/photos/mbeks-traveller-river-1200.webp 1200w, assets/images/photos/mbeks-traveller-river-1600.webp 1600w" sizes="(max-width: 819px) 50vw, 25vw" alt="A traveller in a Mbeks Travels vest looking out over the river" width="800" height="1200" loading="lazy" decoding="async">
+              <span class="photo-grid__cap"><span class="photo-grid__tag">Parks &amp; Landscapes</span><span class="photo-grid__text">A traveller in a Mbeks Travels vest looking out over the river</span></span>
+            </button>
+          </li>
+          <li class="photo-grid__item" data-theme="wildlife">
+            <button class="photo-grid__btn" type="button" data-cursor="View">
+              <img src="assets/images/photos/safari-elephant-800.webp" alt="An elephant walking across the savanna" width="800" height="529" loading="lazy" decoding="async">
+              <span class="photo-grid__cap"><span class="photo-grid__tag">Wildlife</span><span class="photo-grid__text">An elephant walking across the savanna</span></span>
+            </button>
+          </li>
+          <li class="photo-grid__item photo-grid__item--tall" data-theme="beaches">
+            <button class="photo-grid__btn" type="button" data-cursor="View">
+              <img src="assets/images/photos/zanzibar-palms-800.webp" alt="Palm trees over a Zanzibar beach" width="800" height="1067" loading="lazy" decoding="async">
+              <span class="photo-grid__cap"><span class="photo-grid__tag">Beaches</span><span class="photo-grid__text">Palm trees over a Zanzibar beach</span></span>
+            </button>
+          </li>
+          <li class="photo-grid__item" data-theme="parks">
+            <button class="photo-grid__btn" type="button" data-cursor="View">
+              <img src="assets/images/photos/savanna-sunset-800.webp" alt="An acacia tree on the savanna at sunset" width="800" height="533" loading="lazy" decoding="async">
+              <span class="photo-grid__cap"><span class="photo-grid__tag">Parks &amp; Landscapes</span><span class="photo-grid__text">An acacia tree on the savanna at sunset</span></span>
+            </button>
+          </li>
+          <li class="photo-grid__item photo-grid__item--tall" data-theme="group">
+            <button class="photo-grid__btn" type="button" data-cursor="View">
+              <img class="img-top" src="assets/images/photos/savanna-group-family-1200.webp" srcset="assets/images/photos/savanna-group-family-800.webp 800w, assets/images/photos/savanna-group-family-1200.webp 1200w, assets/images/photos/savanna-group-family-1600.webp 1600w" sizes="(max-width: 819px) 50vw, 25vw" alt="A group of travellers and a child posing together on the savanna" width="800" height="1067" loading="lazy" decoding="async">
+              <span class="photo-grid__cap"><span class="photo-grid__tag">Group Trips</span><span class="photo-grid__text">A group of travellers and a child posing together on the savanna</span></span>
+            </button>
+          </li>
+          <li class="photo-grid__item photo-grid__item--tall" data-theme="wildlife">
+            <button class="photo-grid__btn" type="button" data-cursor="View">
+              <img src="assets/images/photos/forest-elephant-800.webp" alt="An elephant among forest trees" width="800" height="1143" loading="lazy" decoding="async">
+              <span class="photo-grid__cap"><span class="photo-grid__tag">Wildlife</span><span class="photo-grid__text">An elephant among forest trees</span></span>
+            </button>
+          </li>
+          <li class="photo-grid__item" data-theme="adventure">
+            <button class="photo-grid__btn" type="button" data-cursor="View">
+              <img src="assets/images/photos/diving-800.webp" alt="A diver beside a shoal of yellow fish" width="800" height="533" loading="lazy" decoding="async">
+              <span class="photo-grid__cap"><span class="photo-grid__tag">Adventure</span><span class="photo-grid__text">A diver beside a shoal of yellow fish</span></span>
+            </button>
+          </li>
+          <li class="photo-grid__item" data-theme="parks">
+            <button class="photo-grid__btn" type="button" data-cursor="View">
+              <img src="assets/images/photos/waterfall-800.webp" alt="A waterfall in lush forest" width="800" height="533" loading="lazy" decoding="async">
+              <span class="photo-grid__cap"><span class="photo-grid__tag">Parks &amp; Landscapes</span><span class="photo-grid__text">A waterfall in lush forest</span></span>
+            </button>
+          </li>
+          <li class="photo-grid__item photo-grid__item--tall" data-theme="beaches">
+            <button class="photo-grid__btn" type="button" data-cursor="View">
+              <img src="assets/images/photos/maldives-villas-800.webp" alt="Overwater villas in the Maldives" width="800" height="1000" loading="lazy" decoding="async">
+              <span class="photo-grid__cap"><span class="photo-grid__tag">Beaches</span><span class="photo-grid__text">Overwater villas in the Maldives</span></span>
+            </button>
+          </li>
+          <li class="photo-grid__item" data-theme="wildlife">
+            <button class="photo-grid__btn" type="button" data-cursor="View">
+              <img src="assets/images/photos/safari-giraffe-800.webp" alt="A giraffe beside an acacia tree" width="800" height="532" loading="lazy" decoding="async">
+              <span class="photo-grid__cap"><span class="photo-grid__tag">Wildlife</span><span class="photo-grid__text">A giraffe beside an acacia tree</span></span>
+            </button>
+          </li>
+          <li class="photo-grid__item photo-grid__item--tall" data-theme="adventure">
+            <button class="photo-grid__btn" type="button" data-cursor="View">
+              <img src="assets/images/photos/sipi-falls-hike-960.webp" srcset="assets/images/photos/sipi-falls-hike-800.webp 800w, assets/images/photos/sipi-falls-hike-960.webp 960w" sizes="(max-width: 819px) 50vw, 25vw" alt="A hiker celebrating at the foot of Sipi Falls in eastern Uganda" width="800" height="1067" loading="lazy" decoding="async">
+              <span class="photo-grid__cap"><span class="photo-grid__tag">Adventure</span><span class="photo-grid__text">A hiker celebrating at the foot of Sipi Falls in eastern Uganda</span></span>
+            </button>
+          </li>
+          <li class="photo-grid__item" data-theme="parks">
+            <button class="photo-grid__btn" type="button" data-cursor="View">
+              <img src="assets/images/photos/green-hills-800.webp" alt="Misty green hills" width="800" height="531" loading="lazy" decoding="async">
+              <span class="photo-grid__cap"><span class="photo-grid__tag">Parks &amp; Landscapes</span><span class="photo-grid__text">Misty green hills</span></span>
+            </button>
+          </li>
+          <li class="photo-grid__item" data-theme="beaches">
+            <button class="photo-grid__btn" type="button" data-cursor="View">
+              <img src="assets/images/photos/beach-lounge-800.webp" alt="Loungers on a white-sand beach" width="800" height="533" loading="lazy" decoding="async">
+              <span class="photo-grid__cap"><span class="photo-grid__tag">Beaches</span><span class="photo-grid__text">Loungers on a white-sand beach</span></span>
+            </button>
+          </li>
+          <li class="photo-grid__item" data-theme="group">
+            <button class="photo-grid__btn" type="button" data-cursor="View">
+              <img src="assets/images/photos/balloons-800.webp" alt="Travellers watching hot-air balloons" width="800" height="533" loading="lazy" decoding="async">
+              <span class="photo-grid__cap"><span class="photo-grid__tag">Group Trips</span><span class="photo-grid__text">Travellers watching hot-air balloons</span></span>
+            </button>
+          </li>
+          <li class="photo-grid__item" data-theme="wildlife">
+            <button class="photo-grid__btn" type="button" data-cursor="View">
+              <img src="assets/images/photos/safari-game-drive-800.webp" alt="A safari vehicle on a game drive" width="800" height="535" loading="lazy" decoding="async">
+              <span class="photo-grid__cap"><span class="photo-grid__tag">Wildlife</span><span class="photo-grid__text">A safari vehicle on a game drive</span></span>
+            </button>
+          </li>
+          <li class="photo-grid__item photo-grid__item--wide" data-theme="adventure">
+            <button class="photo-grid__btn" type="button" data-cursor="View">
+              <img src="assets/images/photos/nile-tubing-jinja-1200.webp" srcset="assets/images/photos/nile-tubing-jinja-800.webp 800w, assets/images/photos/nile-tubing-jinja-1200.webp 1200w, assets/images/photos/nile-tubing-jinja-1600.webp 1600w" sizes="(max-width: 819px) 100vw, 50vw" alt="Friends in helmets tubing down the Nile rapids in Jinja" width="800" height="450" loading="lazy" decoding="async">
+              <span class="photo-grid__cap"><span class="photo-grid__tag">Adventure</span><span class="photo-grid__text">Friends in helmets tubing down the Nile rapids in Jinja</span></span>
+            </button>
+          </li>
+          <li class="photo-grid__item" data-theme="parks">
+            <button class="photo-grid__btn" type="button" data-cursor="View">
+              <img src="assets/images/photos/lake-getaway-800.webp" alt="A boat on a turquoise mountain lake" width="800" height="533" loading="lazy" decoding="async">
+              <span class="photo-grid__cap"><span class="photo-grid__tag">Parks &amp; Landscapes</span><span class="photo-grid__text">A boat on a turquoise mountain lake</span></span>
+            </button>
+          </li>
+          <li class="photo-grid__item" data-theme="beaches">
+            <button class="photo-grid__btn" type="button" data-cursor="View">
+              <img src="assets/images/photos/beach-sunset-800.webp" alt="Waves on a beach at sunset" width="800" height="518" loading="lazy" decoding="async">
+              <span class="photo-grid__cap"><span class="photo-grid__tag">Beaches</span><span class="photo-grid__text">Waves on a beach at sunset</span></span>
+            </button>
+          </li>
+          <li class="photo-grid__item" data-theme="adventure">
+            <button class="photo-grid__btn" type="button" data-cursor="View">
+              <img src="assets/images/photos/dubai-desert-800.webp" alt="A camel caravan in the desert" width="800" height="533" loading="lazy" decoding="async">
+              <span class="photo-grid__cap"><span class="photo-grid__tag">Adventure</span><span class="photo-grid__text">A camel caravan in the desert</span></span>
+            </button>
+          </li>
+          <li class="photo-grid__item" data-theme="beaches">
+            <button class="photo-grid__btn" type="button" data-cursor="View">
+              <img src="assets/images/photos/hero-beach-800.webp" alt="Clear turquoise water on a tropical beach" width="800" height="532" loading="lazy" decoding="async">
+              <span class="photo-grid__cap"><span class="photo-grid__tag">Beaches</span><span class="photo-grid__text">Clear turquoise water on a tropical beach</span></span>
+            </button>
+          </li>
+          <li class="photo-grid__item photo-grid__item--wide" data-theme="parks">
+            <button class="photo-grid__btn" type="button" data-cursor="View">
+              <img src="assets/images/photos/boat-lake-800.webp" alt="A wooden boat on a calm lake" width="800" height="533" loading="lazy" decoding="async">
+              <span class="photo-grid__cap"><span class="photo-grid__tag">Parks &amp; Landscapes</span><span class="photo-grid__text">A wooden boat on a calm lake</span></span>
+            </button>
+          </li>
         </ul>
       </div>
     </section>
@@ -163,7 +320,10 @@
     <dialog class="lightbox" aria-label="Photo viewer" data-lightbox>
       <figure class="lightbox__figure">
         <img class="lightbox__img" src="" alt="">
-        <figcaption class="lightbox__caption"></figcaption>
+        <figcaption class="lightbox__caption">
+          <span class="lightbox__meta"><span class="lightbox__count" data-lightbox-count></span><span class="photo-grid__tag" data-lightbox-tag></span></span>
+          <span class="lightbox__text" data-lightbox-text></span>
+        </figcaption>
       </figure>
       <button class="lightbox__btn lightbox__close" type="button" data-lightbox-close>
         <span class="visually-hidden">Close</span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
@@ -220,7 +380,6 @@
             <li><a href="experience.html">Experiences</a></li>
             <li><a href="destinations.html">Destinations</a></li>
             <li><a href="gallery.html">Gallery</a></li>
-            <li><a href="blog.html">Blog</a></li>
             <li><a href="contacts.html">Contact</a></li>
           </ul>
         </nav>
@@ -231,10 +390,10 @@
           <!-- Social links are disabled until the client supplies profile URLs.
                To enable: replace <span class="social" …> with <a class="social" href="URL" aria-label="Name"> -->
           <ul class="socials">
-            <li><span class="social" title="Facebook (coming soon)"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h-2a4 4 0 0 0-4 4v3H6v4h3v7h4v-7h3l1-4h-4V7a1 1 0 0 1 1-1h2z"/></svg><span class="visually-hidden">Facebook (coming soon)</span></span></li>
-            <li><span class="social" title="Instagram (coming soon)"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8"/></svg><span class="visually-hidden">Instagram (coming soon)</span></span></li>
-            <li><span class="social" title="TikTok (coming soon)"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3v11a4 4 0 1 1-4-4M14 3c0 3 2 5 5 5"/></svg><span class="visually-hidden">TikTok (coming soon)</span></span></li>
-            <li><span class="social" title="YouTube (coming soon)"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="m10 9 5 3-5 3z"/></svg><span class="visually-hidden">YouTube (coming soon)</span></span></li>
+            <li><span class="social" title="Facebook (coming soon)"><img src="assets/images/icons/facebook.png" alt="Facebook (coming soon)" width="44" height="44" loading="lazy" decoding="async"></span></li>
+            <li><span class="social" title="Instagram (coming soon)"><img src="assets/images/icons/instagram.png" alt="Instagram (coming soon)" width="44" height="44" loading="lazy" decoding="async"></span></li>
+            <li><span class="social" title="TikTok (coming soon)"><img src="assets/images/icons/tiktok.png" alt="TikTok (coming soon)" width="44" height="44" loading="lazy" decoding="async"></span></li>
+            <li><span class="social" title="YouTube (coming soon)"><img src="assets/images/icons/youtube.png" alt="YouTube (coming soon)" width="44" height="44" loading="lazy" decoding="async"></span></li>
           </ul>
         </div>
       </div>
